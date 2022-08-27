@@ -16,15 +16,14 @@ function get_teams_wins_and_losses() {
   var all_teams_wins_losses;
   var wins = 0;
   var losses = 0;
+  var team = [];
 
   if (typeof args[0] != 'string') { return "Invalid Input: First argument must be a team of 3 (single cell)"; }
 
   team_of_three = args[0];
   
   // get team to check  
-  const team = team_of_three.split(',');
-  team.forEach(person => person.trim());
-  team.sort();
+  team = get_sorted_team(team_of_three);
 
   for (season in seasons) {
     all_teams_wins_losses = SpreadsheetApp.getActiveSpreadsheet().getRange(seasons[season]).getDisplayValues();
@@ -50,15 +49,31 @@ function get_teams_wins_and_losses() {
 function count_occurences(ateam, teams_to_check, index) {
   var occurences = 0;
   var other_team_str = '';
+  var other_team_arr = [];
 
   for (row in teams_to_check) {
     other_team_str = teams_to_check[row][index];
-    const other_team_arr = other_team_str.split(',');
-    other_team_arr.forEach(person => person.trim());
-    other_team_arr.sort();
+    other_team_arr = get_sorted_team(other_team_str);
 
     if (JSON.stringify(ateam) == JSON.stringify(other_team_arr)) { occurences += 1; }
   }
 
   return occurences;
+}
+
+// Function to sort a team of three
+// Arguments:
+//     arg[0]: single team to sort
+//
+// Returns:
+//     sorted array of team members
+function get_sorted_team(team_str) { 
+  var sorted_team_arr = [];
+  const team_arr = team_str.split(',');
+  
+  for (person in team_arr) {
+    sorted_team_arr[person] = team_arr[person].trim();
+  }
+
+  return sorted_team_arr.sort();;
 }
