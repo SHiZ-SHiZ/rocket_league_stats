@@ -4,7 +4,7 @@
 #Reads in csv's from a directory provided by a command-line-argument for a season, decompose data into individual stats for a player in one game, then sum
 #TIMESTAMP -> 0   Game mode -> 1   Team -> 2   Player -> 3   Points -> 4   Goals -> 5   Assists -> 6   Saves -> 7   Shots -> 8   Damage -> 9   MVP -> 10   Team Score -> 11   Win -> 12   MMR -> 13 
 import os, re, glob, sys
-
+wd = os.cwd()
 def writeStats(file, name, points, goals, assists, saves, shots, mvp, win):
     f.write(name + ',')
     f.write("%d," % points)
@@ -32,11 +32,9 @@ p2 = Player()
 p3 = Player()
 p4 = Player()
 p5 = Player()
-
+os.mkdir('bin')
 player_dict = {0: p0, 1: p1, 2: p2, 3: p3, 4: p4, 5: p5}  
-#path = 'D:\\rocket_league_statistics\\' + str((sys.argv)[1]) #TODO: make more modular
-path = 'bin\\' + str((sys.argv)[1]) 
-os.chdir(path)
+os.chdir(str((sys.argv)[1]))
 dir = os.getcwd()
 for file in glob.glob("*.csv"):
     f = open(file, "r")
@@ -56,8 +54,7 @@ for file in glob.glob("*.csv"):
         x.mvp += int(individual_stats[10])
         x.win += int(individual_stats[12])
     f.close()
-path = '..\\'
-os.chdir(path)
+os.chdir(wd + '\\bin')
 f = open('stats.csv', "w")
 for j in range(6):
     y = player_dict.get(j)
