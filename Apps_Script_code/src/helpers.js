@@ -1,22 +1,17 @@
 // helpers.gs
-// Author: Josh Dye
-// 08/28/2022
 
-// Function to check if an team (string) is already in an array
-// Arguments:
-//     arg[0]: array of teams
-//     arg[1]: string to check for
-//
-// Returns:
-//     true if string is already in array
-function isTeamInArray(team_arr, testTeam_str){
-  for(var i = 0; i<team_arr.length; i++){
-    num_matching_chars = 0;
-    for (var j = 0; j<testTeam_str.length; j++) {
-      if (team_arr[i][j] == testTeam_str[j]) { num_matching_chars += 1; }
-    }
-
-    if (num_matching_chars == testTeam_str.length) { return true; }
-  }
-  return false;
+function countColoredCells(countRange, colorRef) {
+  var activeRg = SpreadsheetApp.getActiveRange();
+  var activeSht = SpreadsheetApp.getActiveSheet();
+  var activeformula = activeRg.getFormula();
+  var countRangeAddress = activeformula.match(/\((.*)\,/).pop().trim();
+  var backGrounds = activeSht.getRange(countRangeAddress).getBackgrounds();
+  var colorRefAddress = activeformula.match(/\,(.*)\)/).pop().trim();
+  var BackGround = activeSht.getRange(colorRefAddress).getBackground();
+  var countCells = 0;
+  for (var i = 0; i < backGrounds.length; i++)
+    for (var k = 0; k < backGrounds[i].length; k++)
+      if ( backGrounds[i][k] == BackGround )
+        countCells = countCells + 1;
+  return countCells;
 }
