@@ -1,5 +1,16 @@
 import os, re, glob, sys
 
+def writeStats(file, team, name, points, goals, assists, saves, shots, mvp, win):
+    f.write(name)
+    f.write("%d," % team)
+    f.write("%d," % points)
+    f.write("%d," % goals)
+    f.write("%d," % assists)
+    f.write("%d," % saves)
+    f.write("%d," % shots)
+    f.write("%d," % mvp)
+    f.write("%d,\n" % win)
+
 class Player:
     team = 2
     name = ''
@@ -35,6 +46,24 @@ for file in glob.glob("*.csv"):
     for entry in stats_map:
         str = stats_map[i]
         individual_stats = str.split(',')
-        print(individual_stats)
-
+        x = player_dict.get(i)
+        x.team = int(individual_stats[2])
+        x.name = individual_stats[3]
+        x.points += int(individual_stats[4])
+        x.goals += int(individual_stats[5])
+        x.assists += int(individual_stats[6])
+        x.saves += int(individual_stats[7])
+        x.shots += int(individual_stats[8])
+        x.mvp += int(individual_stats[10])
+        x.win += int(individual_stats[12])
         i += 1
+    f.close()
+j = 0
+path = 'D:\\rocket_league_statistics\\build'
+os.chdir(path)
+f = open('stats.csv', "w")
+for j in range(6):
+    y = player_dict.get(j)
+    writeStats(f, y.team, y.name, y.points, y.goals, y.assists, y.saves, y.shots, y.mvp, y.win)
+
+
