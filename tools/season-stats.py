@@ -6,15 +6,6 @@
 import os, glob, sys
 from Player import Player
 wd = os.getcwd()
-def writeStats(file, name, points, goals, assists, saves, shots, mvp, win):
-    f.write(name + ',')
-    f.write("%d," % points)
-    f.write("%d," % goals)
-    f.write("%d," % assists)
-    f.write("%d," % saves)
-    f.write("%d," % shots)
-    f.write("%d," % mvp)
-    f.write("%d,\n" % win)
 
 p0 = Player()
 p1 = Player()
@@ -36,20 +27,27 @@ for file in glob.glob("*.csv"):
         str = stats_map[i]
         individual_stats = str.split(',')
         x = player_dict.get(i)
-        x.team = int(individual_stats[2])
-        x.name = individual_stats[3]
-        x.points += int(individual_stats[4])
-        x.goals += int(individual_stats[5])
-        x.assists += int(individual_stats[6])
-        x.saves += int(individual_stats[7])
-        x.shots += int(individual_stats[8])
-        x.mvp += int(individual_stats[10])
-        x.win += int(individual_stats[12])
+        x.setTeam(int(individual_stats[2]))
+        x.setName(individual_stats[3])
+        x.addPoints(int(individual_stats[4]))
+        #x.points += int(individual_stats[4])
+        x.addGoals(int(individual_stats[5]))
+        #x.goals += int(individual_stats[5])
+        x.addAssists(int(individual_stats[6]))
+        #x.assists += int(individual_stats[6])
+        x.addSaves(int(individual_stats[7]))
+        #x.saves += int(individual_stats[7])
+        x.addShots(int(individual_stats[8]))
+        #x.shots += int(individual_stats[8])
+        x.addMVP(int(individual_stats[10]))
+        #x.mvp += int(individual_stats[10])
+        x.addPoints(int(individual_stats[12]))
+        x.win += int(int(individual_stats[12]))
     f.close()
 os.chdir(wd + '\\bin')
 f = open('stats.csv', "w")
 for j in range(6):
     y = player_dict.get(j)
-    writeStats(f, y.name, y.points, y.goals, y.assists, y.saves, y.shots, y.mvp, y.win)
+    y.writeStats(f)
 
 
