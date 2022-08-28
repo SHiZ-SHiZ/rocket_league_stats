@@ -1,7 +1,12 @@
+#Author: Ryan Woebkenberg
+#Date: 08/27/2022
+
+#Reads in csv's from a directory provided by a command-line-argument for a season, decompose data into individual stats for a player in one game, then sum
+#TIMESTAMP -> 0   Game mode -> 1   Team -> 2   Player -> 3   Points -> 4   Goals -> 5   Assists -> 6   Saves -> 7   Shots -> 8   Damage -> 9   MVP -> 10   Team Score -> 11   Win -> 12   MMR -> 13 
 import os, re, glob, sys
 
 def writeStats(file, team, name, points, goals, assists, saves, shots, mvp, win):
-    f.write(name)
+    f.write(name + ',')
     f.write("%d," % team)
     f.write("%d," % points)
     f.write("%d," % goals)
@@ -28,12 +33,10 @@ p2 = Player()
 p3 = Player()
 p4 = Player()
 p5 = Player()
-player_dict = {0: p0, 1: p1, 2: p2, 3: p3, 4: p4, 5: p5}
-
-#TIMESTAMP -> 0   Game mode -> 1   Team -> 2   Player -> 3   Points -> 4   Goals -> 5   Assists -> 6   Saves -> 7   Shots -> 8   Damage -> 9   MVP -> 10   Team Score -> 11   Win -> 12   MMR -> 13   
+player_dict = {0: p0, 1: p1, 2: p2, 3: p3, 4: p4, 5: p5}  
 dir = os.getcwd()
 print(dir)
-path = 'D:\\rocket_league_statistics\\' + str((sys.argv)[1])
+path = 'D:\\rocket_league_statistics\\' + str((sys.argv)[1]) #TODO: make more modular
 os.chdir(path)
 dir = os.getcwd()
 print(dir)
