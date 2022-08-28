@@ -33,6 +33,6 @@ The goal of the project is to streamline the process of retrieving/analyzing dat
 ```
 py season-stats.py "INSERT_PATH_HERE"
 ```
-&emsp;6.) Navigate to the generated 'bin' folder. 
+&emsp;6.) Navigate to the generated 'bin' folder.\
 &emsp;7.) The desired output of season statistics is ```stats.csv```.
 
