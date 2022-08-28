@@ -32,8 +32,10 @@ p2 = Player()
 p3 = Player()
 p4 = Player()
 p5 = Player()
+
 player_dict = {0: p0, 1: p1, 2: p2, 3: p3, 4: p4, 5: p5}  
-path = 'D:\\rocket_league_statistics\\' + str((sys.argv)[1]) #TODO: make more modular
+#path = 'D:\\rocket_league_statistics\\' + str((sys.argv)[1]) #TODO: make more modular
+path = 'bin\\' + str((sys.argv)[1]) 
 os.chdir(path)
 dir = os.getcwd()
 for file in glob.glob("*.csv"):
@@ -54,7 +56,7 @@ for file in glob.glob("*.csv"):
         x.mvp += int(individual_stats[10])
         x.win += int(individual_stats[12])
     f.close()
-path = 'D:\\rocket_league_statistics\\build'
+path = '..\\'
 os.chdir(path)
 f = open('stats.csv', "w")
 for j in range(6):
