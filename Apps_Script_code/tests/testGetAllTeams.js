@@ -1,9 +1,9 @@
-// test_get_all_teams.gs
+// testGetAllTeams.gs
 // Author: Josh Dye
 // 08/27/2022
 
-// Test for function test_get_all_teams()
-function test_get_all_teams() {
+// Test for function getAllTeams()
+function test_getAllTeams() {
 
   correct_output = ["Alec, Alex, Eric",
                     "Alex, Eric, Ryan",
@@ -39,7 +39,7 @@ function test_get_all_teams() {
   var all_unique_teams_arr = [];
   var num_correct = 0;
 
-  all_unique_teams_arr = get_all_teams("'Season 1'!D4:E13", 
+  all_unique_teams_arr = getAllTeams("'Season 1'!D4:E13", 
                                        "'Season 2'!D4:E13",  
                                        "NC_S4!D4:E13")
 
