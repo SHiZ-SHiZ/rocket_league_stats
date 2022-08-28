@@ -5,9 +5,8 @@
 #TIMESTAMP -> 0   Game mode -> 1   Team -> 2   Player -> 3   Points -> 4   Goals -> 5   Assists -> 6   Saves -> 7   Shots -> 8   Damage -> 9   MVP -> 10   Team Score -> 11   Win -> 12   MMR -> 13 
 import os, re, glob, sys
 
-def writeStats(file, team, name, points, goals, assists, saves, shots, mvp, win):
+def writeStats(file, name, points, goals, assists, saves, shots, mvp, win):
     f.write(name + ',')
-    f.write("%d," % team)
     f.write("%d," % points)
     f.write("%d," % goals)
     f.write("%d," % assists)
@@ -67,6 +66,6 @@ os.chdir(path)
 f = open('stats.csv', "w")
 for j in range(6):
     y = player_dict.get(j)
-    writeStats(f, y.team, y.name, y.points, y.goals, y.assists, y.saves, y.shots, y.mvp, y.win)
+    writeStats(f, y.name, y.points, y.goals, y.assists, y.saves, y.shots, y.mvp, y.win)
 
 
