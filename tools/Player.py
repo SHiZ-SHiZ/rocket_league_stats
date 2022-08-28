@@ -26,7 +26,7 @@ class Player:
 
     def addPoints(self, points):
         self.points += points
-    ###
+        
     def getGoals(self):
         return self.goals
     
