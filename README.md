@@ -9,18 +9,18 @@ The goal of the project is to streamline the process of retrieving/analyzing dat
 
 ## How-To
 
-&emsp;1.) Launch Rocket League and open the BakkesMod menu. Navigate to the ```Plugins``` menu, and then to the
-&emsp;&emsp;```RLCSV Plugin``` entry.\
-&emsp;2.) Follow the instructions on the plugin page and set the path to a location of your choice on your machine. \
+&emsp;1.) Launch Rocket League and open the BakkesMod menu. 
+&emsp;2.) Navigate to the ```Plugins``` menu, and then to the ```RLCSV Plugin``` entry.\
+&emsp;3.) Follow the instructions on the plugin page and set the path to a location of your choice on your machine. \
 &emsp;&emsp;&emsp;a.) Be sure to include a trailing '/', otherwise the plugin will prepend the last characters of the path to each file
-&emsp;&emsp;&emsp;name.\
+&emsp;&emsp;&emsp;&emsp;name.\
 &emsp;
 <p align="center">
   <img src="documentation/pics/rlcsv_path_cropped.jpg" />
 </p>
 &emsp;
 
-&emsp;3.) Play the games you want to record. At the conclusion of each game, the results will be saved as a .csv in the 
+&emsp;4.) Play the games you want to record. At the conclusion of each game, the results will be saved as a .csv in the 
 &emsp;&emsp;directory you specified in step 2. When you open the directory, it should look like the below figure.\
 &emsp;
 <p align="center">
@@ -28,11 +28,11 @@ The goal of the project is to streamline the process of retrieving/analyzing dat
 </p>
 &emsp;
 
-&emsp;4.) Open a terminal window, and run the following command, replacing ```"INSERT_PATH_HERE"``` with the exact path 
+&emsp;5.) Open a terminal window, and run the following command, replacing ```"INSERT_PATH_HERE"``` with the exact path 
 &emsp;&emsp;entered during step 2:
 ```
 py season-stats.py "INSERT_PATH_HERE"
 ```
-&emsp;5.) The 'bin' folder will be generated in the same directory where the script is. Navigate into the bin folder. 
-&emsp;&emsp;The desired output of season statistics is ```stats.csv```.
+&emsp;6.) Navigate to the generated 'bin' folder. 
+&emsp;7.) The desired output of season statistics is ```stats.csv```.
 
