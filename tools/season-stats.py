@@ -3,7 +3,7 @@
 
 #Reads in csv's from a directory provided by a command-line-argument for a season, decompose data into individual stats for a player in one game, then sum
 #TIMESTAMP -> 0   Game mode -> 1   Team -> 2   Player -> 3   Points -> 4   Goals -> 5   Assists -> 6   Saves -> 7   Shots -> 8   Damage -> 9   MVP -> 10   Team Score -> 11   Win -> 12   MMR -> 13 
-import os, re, glob, sys
+import os, glob, sys
 from Player import Player
 wd = os.getcwd()
 def writeStats(file, name, points, goals, assists, saves, shots, mvp, win):
