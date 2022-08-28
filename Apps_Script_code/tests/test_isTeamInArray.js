@@ -4,21 +4,21 @@
 
 // Test for function isTeamInArray()
 function test_isTeamInArray() {
-  big_arr_1 = [["Alec", "Alex", "Josh"]["Eric", "Josh", "Ryan"]];
+  big_arr_1 = ["Alec, Alex, Josh", "Eric, Josh, Ryan"];
   big_arr_2 = [];
-  test_arr_1 = ["Alec", "Alex", "Josh"];
-  test_arr_2 = ["Alex", "Josh", "Ryan"];
+  test_str_1 = "Alec, Alex, Josh";
+  test_str_2 = "Alex, Josh, Ryan";
   var num_correct = 0;
 
-  if (isTeamInArray(big_arr_1,test_arr_1)) {
+  if (isTeamInArray(big_arr_1,test_str_1)) {
     num_correct += 1;
   }
 
-  if (!isTeamInArray(big_arr_1, test_arr_2)) {
+  if (!isTeamInArray(big_arr_1, test_str_2)) {
     num_correct += 1;
   }
 
-  if (!isTeamInArray(big_arr_2, test_arr_1)) {
+  if (!isTeamInArray(big_arr_2, test_str_1)) {
     num_correct += 1;
   }
 

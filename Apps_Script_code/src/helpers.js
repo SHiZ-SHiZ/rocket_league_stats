@@ -1,15 +1,22 @@
 // helpers.gs
+// Author: Josh Dye
+// 08/28/2022
 
-// Function to check if an array (length 3) is already in a 2d array
+// Function to check if an team (string) is already in an array
 // Arguments:
-//     arg[0]: 2d array of teams
-//     arg[1]: array of to check
+//     arg[0]: array of teams
+//     arg[1]: string to check for
 //
 // Returns:
-//     true if array is already in array
-function isTeamInArray(team_arr, testTeam_Arr){
-    for(var i = 0; i<team_arr.length; i++){
-      if (team_arr[i][0] == testTeam_Arr[0] && team_arr[i][1] == testTeam_Arr[1] && team_arr[i][2] == testTeam_Arr[2]) { return true; }
+//     true if string is already in array
+function isTeamInArray(team_arr, testTeam_str){
+  for(var i = 0; i<team_arr.length; i++){
+    num_matching_chars = 0;
+    for (var j = 0; j<testTeam_str.length; j++) {
+      if (team_arr[i][j] == testTeam_str[j]) { num_matching_chars += 1; }
     }
-    return false
+
+    if (num_matching_chars == testTeam_str.length) { return true; }
   }
+  return false;
+}
