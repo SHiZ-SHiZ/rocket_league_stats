@@ -4,6 +4,7 @@
 #Reads in csv's from a directory provided by a command-line-argument for a season, decompose data into individual stats for a player in one game, then sum
 #TIMESTAMP -> 0   Game mode -> 1   Team -> 2   Player -> 3   Points -> 4   Goals -> 5   Assists -> 6   Saves -> 7   Shots -> 8   Damage -> 9   MVP -> 10   Team Score -> 11   Win -> 12   MMR -> 13 
 import os, re, glob, sys
+from Player import Player
 wd = os.getcwd()
 def writeStats(file, name, points, goals, assists, saves, shots, mvp, win):
     f.write(name + ',')
@@ -15,24 +16,15 @@ def writeStats(file, name, points, goals, assists, saves, shots, mvp, win):
     f.write("%d," % mvp)
     f.write("%d,\n" % win)
 
-class Player:
-    team = 2
-    name = ''
-    points = 0
-    goals = 0
-    assists = 0
-    saves = 0
-    shots = 0
-    mvp = 0
-    win = 0
-
 p0 = Player()
 p1 = Player()
 p2 = Player()
 p3 = Player()
 p4 = Player()
 p5 = Player()
-os.mkdir('bin')
+
+if not os.path.exists('bin'):
+    os.mkdir('bin')
 player_dict = {0: p0, 1: p1, 2: p2, 3: p3, 4: p4, 5: p5}  
 os.chdir(str((sys.argv)[1]))
 dir = os.getcwd()
