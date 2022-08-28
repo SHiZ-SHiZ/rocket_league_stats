@@ -44,8 +44,7 @@ for file in glob.glob("*.csv"):
     stats_map = repr(f.read()).split('\\n')[1:]
     stats_map.pop()
     #print(stats_map)
-    i = 0
-    for entry in stats_map:
+    for i in range(len(stats_map)):
         str = stats_map[i]
         individual_stats = str.split(',')
         x = player_dict.get(i)
@@ -58,7 +57,6 @@ for file in glob.glob("*.csv"):
         x.shots += int(individual_stats[8])
         x.mvp += int(individual_stats[10])
         x.win += int(individual_stats[12])
-        i += 1
     f.close()
 j = 0
 path = 'D:\\rocket_league_statistics\\build'
