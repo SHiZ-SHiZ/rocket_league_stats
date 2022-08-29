@@ -42,5 +42,6 @@ f = open('stats.csv', "w")
 for j in range(6):
     y = player_dict.get(j)
     y.writeStats(f)
+f.close()
 
 

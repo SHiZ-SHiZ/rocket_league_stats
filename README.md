@@ -5,7 +5,8 @@ The goal of the project is to streamline the process of retrieving/analyzing dat
 
 &emsp;1.) Rocket League with BakkesMod installed your local machine. \
 &emsp;2.) The [RLCSV plugin.](https://bakkesplugins.com/plugins/view/94) This is available at the embedded link or as a .zip in the repository. \
-&emsp;3.) Python installed on your local machine
+&emsp;3.) Python 3.10 (other versions may work, but this was developed using 3.10)
+&emsp;&emsp;&emsp;a.) To check, open a terminal/command prompt and 
 
 ## How-To
 
