@@ -18,7 +18,7 @@ function count_occurences(ateam, teams_to_check, index) {
 
   for (row in teams_to_check) {
     other_team_str = teams_to_check[row][index];
-    other_team_arr = get_sorted_team(other_team_str);
+    other_team_arr = getSortedTeam(other_team_str);
 
     if (JSON.stringify(ateam) == JSON.stringify(other_team_arr)) { occurences += 1; }
   }
@@ -33,7 +33,7 @@ function count_occurences(ateam, teams_to_check, index) {
 // Returns:
 //     sorted array of team members
 //
-function get_sorted_team(team_str) { 
+function getSortedTeam(team_str) { 
   var sorted_team_arr = [];
   const team_arr = team_str.split(',');
   

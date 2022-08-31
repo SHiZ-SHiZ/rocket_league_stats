@@ -34,7 +34,7 @@ function getAllTeams(seasons) {
     for (row in all_teams_wins_losses) {
       for (column in all_teams_wins_losses[row]) {
         team_str = all_teams_wins_losses[row][column];
-        team_arr = get_sorted_team(team_str);
+        team_arr = getSortedTeam(team_str);
 
         if (!isTeamInArray(all_teams_all_seasons, team_arr.join(", "))) { all_teams_all_seasons.push(team_arr.join(", ")); }
       }
@@ -66,7 +66,7 @@ function getTeamsWinsAndLosses() {
   team_of_three = args[0];
   
   // get team to check  
-  team = get_sorted_team(team_of_three);
+  team = getSortedTeam(team_of_three);
 
   for (season in seasons) {
     all_teams_wins_losses = SpreadsheetApp.getActiveSpreadsheet().getRange(seasons[season]).getDisplayValues();

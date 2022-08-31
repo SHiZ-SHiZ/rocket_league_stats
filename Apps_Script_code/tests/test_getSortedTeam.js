@@ -1,9 +1,9 @@
-// test_test_get_sorted_team.gs
+// test for getSortedTeam.gs
 // Author: Josh Dye
 // 08/27/2022
 
-// Test for function test_get_sorted_team()
-function test_get_sorted_team() {
+// Test for function getSortedTeam()
+function test_getSortedTeam() {
   sorted_inputs = [["Alec", "Alex", "Eric"],
                    ["Alec", "Alex", "Ryan"],
                    ["Alec", "Alex", "Josh"],
@@ -19,7 +19,7 @@ function test_get_sorted_team() {
   var num_correct = 0;
 
   for (team in unsorted_inputs) {
-    sorted_team = get_sorted_team(unsorted_inputs[team]);
+    sorted_team = getSortedTeam(unsorted_inputs[team]);
 
     if (JSON.stringify(sorted_team) == JSON.stringify(sorted_inputs[team])) {
       num_correct += 1;
@@ -28,4 +28,3 @@ function test_get_sorted_team() {
 
   return num_correct / unsorted_inputs.length;
 }
-  
