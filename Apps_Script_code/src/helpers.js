@@ -1,17 +1,26 @@
 // helpers.gs
 
-function countColoredCells(countRange, colorRef) {
-  var activeRg = SpreadsheetApp.getActiveRange();
-  var activeSht = SpreadsheetApp.getActiveSheet();
-  var activeformula = activeRg.getFormula();
-  var countRangeAddress = activeformula.match(/\((.*)\,/).pop().trim();
-  var backGrounds = activeSht.getRange(countRangeAddress).getBackgrounds();
-  var colorRefAddress = activeformula.match(/\,(.*)\)/).pop().trim();
-  var BackGround = activeSht.getRange(colorRefAddress).getBackground();
-  var countCells = 0;
-  for (var i = 0; i < backGrounds.length; i++)
-    for (var k = 0; k < backGrounds[i].length; k++)
-      if ( backGrounds[i][k] == BackGround )
-        countCells = countCells + 1;
-  return countCells;
-}
+// Function to count the nummber of cells that have the specified background color
+// Arguments:
+//     arg[0]: range of cells to check 
+//     arg[1]: color (string) to check for
+//
+// Returns:
+//     number of occurences
+//
+function countBackgroundColoredCells(rangeSpec, color) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet();
+  const colorsToCheck = sheet.getRange(rangeSpec).getBackgrounds();
+  // const doneColor = sheet.getRange(colorCellSpec).getBackgrounds()[0][0];
+  const doneColor = color;
+  let count = 0;
+  for ( let i = 0; i < colorsToCheck.length; i++ ) {
+    for ( let j = 0; j < colorsToCheck[i].length; j++ ) {
+      const color = colorsToCheck[i][j];
+      if ( color === doneColor ) {
+        count++;
+      }
+    }
+  }
+  return count;
+};

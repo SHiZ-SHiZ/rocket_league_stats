@@ -10,6 +10,7 @@
 //
 // Returns:
 //     number of occurences
+//
 function count_occurences(ateam, teams_to_check, index) {
   var occurences = 0;
   var other_team_str = '';
@@ -31,6 +32,7 @@ function count_occurences(ateam, teams_to_check, index) {
 //
 // Returns:
 //     sorted array of team members
+//
 function get_sorted_team(team_str) { 
   var sorted_team_arr = [];
   const team_arr = team_str.split(',');
@@ -49,6 +51,7 @@ function get_sorted_team(team_str) {
 //
 // Returns:
 //     true if string is already in array
+//
 function isTeamInArray(team_arr, testTeam_str){
   for(var i = 0; i<team_arr.length; i++){
     num_matching_chars = 0;

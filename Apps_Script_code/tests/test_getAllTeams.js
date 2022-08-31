@@ -5,45 +5,45 @@
 // Test for function getAllTeams()
 function test_getAllTeams() {
 
-  correct_output = ["Alec, Alex, Eric",
-                    "Alex, Eric, Ryan",
-                    "Alec, Alex, Ryan",
-                    "Alec, Alex, Josh",
-                    "Alec, Eric, Josh",
-                    "Alec, Josh, Ryan",
-                    "Alex, Eric, Josh",
-                    "Alec, Eric, Ryan",
-                    "Eric, Josh, Ryan",
-                    "Alex, Josh, Ryan",
-                    "Adam, Alec, Alex",
-                    "Adam, Alec, Eric",
-                    "Adam, Alex, Josh",
-                    "Adam, Eric, Josh",
-                    "Adam, Eric, Ryan",
-                    "Adam, Alex, Eric",
-                    "Adam, Alec, Ryan",
-                    "Adam, Alex, Ryan",
-                    "Adam, Alec, Josh",
-                    "Adam, Josh, Ryan",
-                    "Brendan, Eric, Ryan",
-                    "Alec, Brendan, Ryan",
-                    "Brendan, Josh, Ryan",
-                    "Alex, Brendan, Josh",
-                    "Alec, Eric, Brendan",
-                    "Alex, Brendan, Eric",
-                    "Alex, Brendan, Ryan",
-                    "Brendan, Eric, Josh",
-                    "Alec, Brendan, Josh",
-                    "Alec, Alex, Brendan"]
+  correct_outputs = ["Adam, Alec, Alex",
+  "Adam, Alec, Eric",
+  "Adam, Alec, Josh",
+  "Adam, Alec, Ryan",
+  "Adam, Alex, Eric",
+  "Adam, Alex, Josh",
+  "Adam, Alex, Ryan",
+  "Adam, Eric, Josh",
+  "Adam, Eric, Ryan",
+  "Adam, Josh, Ryan",
+  "Alec, Alex, Brendan",
+  "Alec, Alex, Eric",
+  "Alec, Alex, Josh",
+  "Alec, Alex, Ryan",
+  "Alec, Brendan, Eric",
+  "Alec, Brendan, Josh",
+  "Alec, Brendan, Ryan",
+  "Alec, Eric, Josh",
+  "Alec, Eric, Ryan",
+  "Alec, Josh, Ryan",
+  "Alex, Brendan, Eric",
+  "Alex, Brendan, Josh",
+  "Alex, Brendan, Ryan",
+  "Alex, Eric, Josh",
+  "Alex, Eric, Ryan",
+  "Alex, Josh, Ryan",
+  "Brendan, Eric, Josh",
+  "Brendan, Eric, Ryan",
+  "Brendan, Josh, Ryan",
+  "Eric, Josh, Ryan"]
 
   var all_unique_teams_arr = [];
   var num_correct = 0;
 
-  all_unique_teams_arr = getAllTeams("'Season 1'!D4:E13", 
+  all_unique_teams_arr = getAllTeams(["'Season 1'!D4:E13", 
                                        "'Season 2'!D4:E13",  
-                                       "NC_S4!D4:E13")
+                                       "NC_S4!D4:E13"])
 
-  if (all_unique_teams_arr.length != correct_output.length) { 
+  if (all_unique_teams_arr.length != correct_outputs.length) { 
     return "Error: Nuber of inputs does not match truths list length";
   }
 
