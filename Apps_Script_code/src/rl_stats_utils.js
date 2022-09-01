@@ -27,7 +27,7 @@ function getFullRange(seasons, needed_range) {
 // Returns:
 //     number of occurences
 //
-function count_occurences(ateam, teams_to_check, index) {
+function countOccurences(ateam, teams_to_check, index) {
   var occurences = 0;
   var other_team_str = '';
   var other_team_arr = [];
