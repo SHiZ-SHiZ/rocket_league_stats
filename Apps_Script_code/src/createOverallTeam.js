@@ -16,6 +16,9 @@ const HEADER_CELL_COLOR = "#55a8ad";
 const BLUE_CELL_BACKGROUND = "#0000ff";
 const ORANGE_CELL_BACKGROUND = "#ff9900";
 
+// Teams Cell Range
+const TEAMS_CELL_RANGE = "D4:E13";
+
 // Function to get an array of all teams who have played a game in given sheets
 // Arguments:
 //     arg[0:]: seasons to get teams from in the format ["'{sheet_name}'!D3:E13", ...]
@@ -92,7 +95,7 @@ function createOverallTeam(seasons) {
   var number_blue_wins = 0;
   var wins_losses = [];
 
-  if (seasons.length == 0) { return "Error: Must provide seasons as arguments!"; }
+  seasons = getFullRange(seasons, TEAMS_CELL_RANGE);
 
   // get all teams
   all_unique_teams_arr = getAllTeams(seasons);

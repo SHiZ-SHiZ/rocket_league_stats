@@ -2,6 +2,22 @@
 // Author: Josh Dye
 // 08/28/2022
 
+// Function converts strings of sheet names (in an array) into a range with the sheet name and input range
+// Arguments:
+//     arg[0:]: array of string seasons (sheet_names) in the format ["sheet_name", ...]
+//
+// Returns:
+//     array of string seasons (sheet_names) with the full range spec concatenated
+//
+function getFullRange(seasons, needed_range) {
+
+  for (season in seasons) {
+    seasons[season] = "'" + seasons[season] + "'!" + needed_range;
+  }
+
+  return seasons;
+}
+
 // Function to count the number of times a single team of 3 appears in a list of teams
 // Arguments:
 //     arg[0]: single team to check for 
