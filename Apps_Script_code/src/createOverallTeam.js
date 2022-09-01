@@ -84,6 +84,48 @@ function getTeamsWinsAndLosses() {
   return [[wins,losses]];
 }
 
+//Function to format the font and cells of the overall teams table
+//
+function formatOverallTeamRange(num_teams) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var s1 = ss.getActiveSheet();
+
+  // make cell borders and color
+  s1.autoResizeColumn(OVERALL_TEAM_COL_OFFSET);
+
+  s1.getRange(OVERALL_COLOR_HEADER_ROW+1, OVERALL_TEAM_COL_OFFSET).setBackgroundColor(ORANGE_CELL_BACKGROUND);
+  s1.getRange(OVERALL_COLOR_HEADER_ROW+2, OVERALL_TEAM_COL_OFFSET).setBackgroundColor(BLUE_CELL_BACKGROUND);
+  s1.getRange(OVERALL_COLOR_HEADER_ROW+1, OVERALL_TEAM_COL_OFFSET, 2, 1).setFontColor("#ffffff");
+
+  s1.getRange(OVERALL_COLOR_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setFontWeight("bold");
+  s1.getRange(OVERALL_COLOR_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setFontSize(14);
+  s1.getRange(OVERALL_COLOR_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setBackgroundColor(HEADER_CELL_COLOR);
+
+  s1.getRange(OVERALL_TEAM_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setFontWeight("bold");
+  s1.getRange(OVERALL_TEAM_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setFontSize(14);
+  s1.getRange(OVERALL_TEAM_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setBackgroundColor(HEADER_CELL_COLOR);
+
+  s1.getRange(OVERALL_COLOR_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, num_teams, 3).setHorizontalAlignment('center');
+
+  s1.getRange(OVERALL_TEAM_NAMES_ROW_OFFSET, OVERALL_TEAM_COL_OFFSET, num_teams, 3).sort([{column: OVERALL_WINS_COL_OFFSET, ascending: false},
+                                                                                                            {column: OVERALL_LOSSES_COL_OFFSET, ascending: true},
+                                                                                                            {column: OVERALL_TEAM_COL_OFFSET, ascending: true}]);
+
+  s1.getRange(OVERALL_TEAM_NAMES_ROW_OFFSET, OVERALL_TEAM_COL_OFFSET, num_teams, 1).setBackgroundColor("#1c4214");
+  s1.getRange(OVERALL_TEAM_NAMES_ROW_OFFSET, OVERALL_TEAM_COL_OFFSET, num_teams, 1).setFontColor('white');
+
+  s1.getRange(OVERALL_COLOR_ROW_OFFSET, OVERALL_WINS_COL_OFFSET, 2, 2).setBackgroundColor("#03fca5");
+  s1.getRange(OVERALL_TEAM_NAMES_ROW_OFFSET, OVERALL_WINS_COL_OFFSET, num_teams, 2).setBackgroundColor("#03fca5");
+
+  s1.getRange(OVERALL_COLOR_ROW_OFFSET, OVERALL_WINS_COL_OFFSET, 2, 2).setBorder(false, false, false, false, true, true, "black", SpreadsheetApp.BorderStyle.SOLID);
+  s1.getRange(OVERALL_TEAM_NAMES_ROW_OFFSET, OVERALL_WINS_COL_OFFSET, num_teams, 2).setBorder(false, false, false, false, true, true, "black", SpreadsheetApp.BorderStyle.SOLID);
+
+  s1.getRange(OVERALL_COLOR_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, num_teams+4, 3).setBorder(true, true, true, true, null, null, "black", SpreadsheetApp.BorderStyle.SOLID_THICK);
+  s1.getRange(OVERALL_COLOR_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, num_teams+4, 1).setBorder(true, true, true, true, null, true, "black", SpreadsheetApp.BorderStyle.SOLID_THICK);
+  s1.getRange(OVERALL_COLOR_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setBorder(true, true, true, true, true, null, "black", SpreadsheetApp.BorderStyle.SOLID_THICK);
+  s1.getRange(OVERALL_TEAM_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setBorder(true, true, true, true, true, null, "black", SpreadsheetApp.BorderStyle.SOLID_THICK);
+}
+
 // Function to create the overall wins and losses table
 // Arguments:
 //     arg[0]: array seasons (sheet names) to be included
@@ -132,39 +174,6 @@ function createOverallTeam(seasons) {
     s1.getRange(OVERALL_TEAM_NAMES_ROW_OFFSET+i, OVERALL_TEAM_COL_OFFSET+1, 1, 2).setValues([all_teams_wins_losses_arr[i]]);
   }
 
-  // make cell borders and color
-  s1.autoResizeColumn(OVERALL_TEAM_COL_OFFSET);
-
-  s1.getRange(OVERALL_COLOR_HEADER_ROW+1, OVERALL_TEAM_COL_OFFSET).setBackgroundColor(ORANGE_CELL_BACKGROUND);
-  s1.getRange(OVERALL_COLOR_HEADER_ROW+2, OVERALL_TEAM_COL_OFFSET).setBackgroundColor(BLUE_CELL_BACKGROUND);
-  s1.getRange(OVERALL_COLOR_HEADER_ROW+1, OVERALL_TEAM_COL_OFFSET, 2, 1).setFontColor("#ffffff");
-
-  s1.getRange(OVERALL_COLOR_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setFontWeight("bold");
-  s1.getRange(OVERALL_COLOR_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setFontSize(14);
-  s1.getRange(OVERALL_COLOR_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setBackgroundColor(HEADER_CELL_COLOR);
-
-  s1.getRange(OVERALL_TEAM_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setFontWeight("bold");
-  s1.getRange(OVERALL_TEAM_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setFontSize(14);
-  s1.getRange(OVERALL_TEAM_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setBackgroundColor(HEADER_CELL_COLOR);
-
-  s1.getRange(OVERALL_COLOR_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, all_unique_teams_arr.length+4, 3).setHorizontalAlignment('center');
-
-  s1.getRange(OVERALL_TEAM_NAMES_ROW_OFFSET, OVERALL_TEAM_COL_OFFSET, all_unique_teams_arr.length, 3).sort([{column: OVERALL_WINS_COL_OFFSET, ascending: false},
-                                                                                                            {column: OVERALL_LOSSES_COL_OFFSET, ascending: true},
-                                                                                                            {column: OVERALL_TEAM_COL_OFFSET, ascending: true}]);
-
-  s1.getRange(OVERALL_TEAM_NAMES_ROW_OFFSET, OVERALL_TEAM_COL_OFFSET, all_unique_teams_arr.length, 1).setBackgroundColor("#1c4214");
-  s1.getRange(OVERALL_TEAM_NAMES_ROW_OFFSET, OVERALL_TEAM_COL_OFFSET, all_unique_teams_arr.length, 1).setFontColor('white');
-
-  s1.getRange(OVERALL_COLOR_ROW_OFFSET, OVERALL_WINS_COL_OFFSET, 2, 2).setBackgroundColor("#03fca5");
-  s1.getRange(OVERALL_TEAM_NAMES_ROW_OFFSET, OVERALL_WINS_COL_OFFSET, all_unique_teams_arr.length, 2).setBackgroundColor("#03fca5");
-
-  s1.getRange(OVERALL_COLOR_ROW_OFFSET, OVERALL_WINS_COL_OFFSET, 2, 2).setBorder(false, false, false, false, true, true, "black", SpreadsheetApp.BorderStyle.SOLID);
-  s1.getRange(OVERALL_TEAM_NAMES_ROW_OFFSET, OVERALL_WINS_COL_OFFSET, all_unique_teams_arr.length, 2).setBorder(false, false, false, false, true, true, "black", SpreadsheetApp.BorderStyle.SOLID);
-
-  s1.getRange(OVERALL_COLOR_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, all_unique_teams_arr.length+4, 3).setBorder(true, true, true, true, null, null, "black", SpreadsheetApp.BorderStyle.SOLID_THICK);
-  s1.getRange(OVERALL_COLOR_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, all_unique_teams_arr.length+4, 1).setBorder(true, true, true, true, null, true, "black", SpreadsheetApp.BorderStyle.SOLID_THICK);
-  s1.getRange(OVERALL_COLOR_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setBorder(true, true, true, true, true, null, "black", SpreadsheetApp.BorderStyle.SOLID_THICK);
-  s1.getRange(OVERALL_TEAM_HEADER_ROW, OVERALL_TEAM_COL_OFFSET, 1, 3).setBorder(true, true, true, true, true, null, "black", SpreadsheetApp.BorderStyle.SOLID_THICK);
+  formatOverallTeamRange(all_unique_teams_arr.length);
 
 }
