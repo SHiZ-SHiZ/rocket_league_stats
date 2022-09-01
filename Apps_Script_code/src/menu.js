@@ -2,7 +2,7 @@
 
 function onOpen() {
   var ui = SpreadsheetApp.getUi();
-  ui.createMenu("Don't Touch {WIP}")
+  ui.createMenu("RL Stats Functions")
       .addSubMenu(ui.createMenu('Create Overall...')
         .addItem('Teams', 'menu_createOverallTeam'))
       .addToUi();
@@ -17,7 +17,7 @@ function menu_createOverallTeam() {
 
   if (response == ui.Button.NO) { return; }
 
-  response = ui.prompt("Enter the seasons (sheet names) you want to include.")
+  response = ui.prompt("Enter the seasons (sheet names) you want to include. e.g. Season 1, Season 2, Season 3")
   const seasons_arr = response.getResponseText().split(',');
 
   if (seasons_arr.length == 0) { return "Error: Must provide seasons as arguments!"; }
