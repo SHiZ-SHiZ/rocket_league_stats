@@ -4,7 +4,7 @@
 The goal of the project is to streamline the process of retrieving/analyzing data from Rocket League games. The prerequisites for using the software are listed below:
 
 &emsp;1.) Rocket League with BakkesMod installed your local machine. \
-&emsp;2.) The [RLCSV plugin.](https://bakkesplugins.com/plugins/view/94) This is available at the embedded link or as a .zip in the repository. \
+&emsp;2.) The [RLCSV plugin.](https://bakkesplugins.com/plugins/view/94) This is available at the embedded link or as a .zip in the ```tools``` folder. \
 &emsp;3.) Python 3.10 (other versions may work, but this was developed using 3.10) \
 &emsp;&emsp;&emsp;a.) To check, open a terminal/command prompt and type ```python --version``` or ```py --version``` \
 &emsp;&emsp;&emsp;b.) If you do not have Python installed, [this link](https://www.python.org/downloads/) provides an official installer. Be sure to check the box for adding Python to your system's PATH.
