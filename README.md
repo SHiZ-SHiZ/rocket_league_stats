@@ -21,7 +21,7 @@ The goal of the project is to streamline the process of retrieving/analyzing dat
   <img src="documentation/pics/rlcsv_path_cropped.jpg" />
 </p>
 
-&emsp;4.) Play the games you want to record. At the conclusion of each game, the results will be saved as a .csv in the directory you specified in step 2. When you open the directory, it should look like the below figure.
+&emsp;4.) Play the games you want to record. At the conclusion of each game, the results will be saved as a .csv in the directory you specified in step 3. When you open the directory, it should look like the below figure.
 
 <p align="center">
   <img src="documentation/pics/directory.png" />
@@ -35,7 +35,7 @@ The goal of the project is to streamline the process of retrieving/analyzing dat
 python season-stats.py "INSERT_PATH_HERE"
 ```
 
-&emsp;&emsp;If that doesn't work, try replacing ```py``` with ```python``` 
+&emsp;&emsp;If that doesn't work, try replacing ```python``` with ```py``` 
 
 &emsp;8.) Navigate to the generated 'bin' folder.\
 &emsp;9.) The desired output of season statistics is ```stats.csv```.

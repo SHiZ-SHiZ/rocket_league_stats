@@ -27,7 +27,7 @@ for file in glob.glob("*.csv"):
         str = stats_map[i]
         individual_stats = str.split(',')
         x = player_dict.get(i)
-        x.setTeam(int(individual_stats[2]))
+        x.setTeam(int(individual_stats[2]))#TODO: Clean up with add'l constructor definitions
         x.setName(individual_stats[3])
         x.addPoints(int(individual_stats[4]))
         x.addGoals(int(individual_stats[5]))
