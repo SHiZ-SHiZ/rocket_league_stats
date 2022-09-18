@@ -5,6 +5,7 @@
 #TIMESTAMP -> 0   Game mode -> 1   Team -> 2   Player -> 3   Points -> 4   Goals -> 5   Assists -> 6   Saves -> 7   Shots -> 8   Damage -> 9   MVP -> 10   Team Score -> 11   Win -> 12   MMR -> 13 
 import os, glob, sys
 from Player import Player
+from Team import Team
 wd = os.getcwd()
 
 p0 = Player()
@@ -23,6 +24,8 @@ for file in glob.glob("*.csv"):
     f = open(file, "r")
     stats_map = repr(f.read()).split('\\n')[1:]
     stats_map.pop()
+    winningTeam = Team()
+    losingTeam = Team()
     for i in range(len(stats_map)):
         str = stats_map[i]
         individual_stats = str.split(',')
@@ -36,6 +39,8 @@ for file in glob.glob("*.csv"):
         x.addShots(int(individual_stats[8]))
         x.addMVP(int(individual_stats[10]))
         x.addWin(int(individual_stats[12]))
+        if int(individual_stats[12] == 1):
+            print("test")
     f.close()
 os.chdir(wd + '\\bin')
 f = open('stats.csv', "w")

@@ -65,11 +65,12 @@ class Player:
     
     
     def writeStats(self, f):
-        f.write(self.name + ',')
-        f.write("%d," % self.points)
-        f.write("%d," % self.goals)
-        f.write("%d," % self.assists)
-        f.write("%d," % self.saves)
-        f.write("%d," % self.shots)
-        f.write("%d," % self.mvp)
-        f.write("%d,\n" % self.win)
+        f.write(self.getName() + ',')
+        f.write("%d," % self.getPoints())
+        f.write("%d," % self.getGoals())
+        f.write("%d," % self.getAssists())
+        f.write("%d," % self.getSaves())
+        f.write("%d," % self.getShots())
+        f.write("%d," % self.getMVP())
+        f.write("%d,\n" % self.getWin())
+
