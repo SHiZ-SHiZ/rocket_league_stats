@@ -3,6 +3,7 @@
 
 #Reads in csv's from a directory provided by a command-line-argument for a season, decompose data into individual stats for a player in one game, then sum
 #TIMESTAMP -> 0   Game mode -> 1   Team -> 2   Player -> 3   Points -> 4   Goals -> 5   Assists -> 6   Saves -> 7   Shots -> 8   Damage -> 9   MVP -> 10   Team Score -> 11   Win -> 12   MMR -> 13 
+#if Team == 0 then color is BLUE, if Team == 1 then color is ORANGE, #0000ff for BLUE and #ff9900 for ORANGE
 import os, glob, sys
 from Player import Player
 from Team import Team
@@ -45,9 +46,17 @@ for file in glob.glob("*.csv"):
         if (int(individual_stats[12])):
             winningTeam.addPlayer(x.getName())
             winningTeam.setScore(x.getTeamPoints())
+            if x.getTeam():
+                winningTeam.setColor("#ff9900")
+            else:
+                winningTeam.setColor("#0000ff")
         else:
             losingTeam.addPlayer(x.getName())
             losingTeam.setScore(x.getTeamPoints())
+            if x.getTeam():
+                losingTeam.setColor("#ff9900")
+            else:
+                losingTeam.setColor("#0000ff")
     s = ("%d" + ',' + winningTeam.strPrintStats() + ',' + losingTeam.strPrintStats() + "\n") % game
     match_table.append(s)
     winningTeam.clearPlayers()
@@ -61,6 +70,7 @@ for j in range(6):
     y.writeStats(f)
 for k in match_table:
     f.write(k)
+
 f.close()
 
 
