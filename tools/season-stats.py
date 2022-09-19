@@ -56,7 +56,7 @@ for file in glob.glob("*.csv"):
     f.close()
 
 os.chdir(wd + '\\bin')
-f = open('stats-test.csv', "w")
+f = open('stats.csv', "w")
 for j in range(6):
     y = player_dict.get(j)
     y.writeStats(f)
