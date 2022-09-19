@@ -4,6 +4,7 @@ function onOpen() {
   var ui = SpreadsheetApp.getUi();
   ui.createMenu("RL Stats Functions")
       .addSubMenu(ui.createMenu('Create Overall...')
+        .addItem('Players', 'menu_createOverallPlayers')
         .addItem('Teams', 'menu_createOverallTeam')
         .addItem('Season Totals', 'menu_createOverallTotals'))
       .addToUi();
@@ -17,4 +18,9 @@ function menu_createOverallTeam() {
 // Menu item handler for createOverallTotals()
 function menu_createOverallTotals() {   
   createOverallTotals(getSeasonInput());
+}
+
+// Menu item handler for createOverallPlayers()
+function menu_createOverallPlayers() {
+  createOverallPlayers(getSeasonInput());
 }
