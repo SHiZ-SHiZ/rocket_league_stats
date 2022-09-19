@@ -70,7 +70,9 @@ for j in range(6):
     y.writeStats(f)
 for k in match_table:
     f.write(k)
-
 f.close()
-
+#CSV output for individual stats is:
+#1 -> name, 2 -> points, 3 -> goals, 4 -> assists, 5 -> saves, 6 -> shots, 7 -> mvps, 8 -> wins (rows 1-6)
+#CSV output for team statistics is:
+#1 -> match number, 2 -> winning roster, 3 -> winning goals, 4 -> winning color, 5 -> losing roster, 6 -> losing goals, 7 -> losing color (rows 7-16)
 
