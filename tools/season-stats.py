@@ -7,13 +7,16 @@ import os, glob, sys
 from Player import Player
 from Team import Team
 wd = os.getcwd()
-
+game = 0
 p0 = Player()
 p1 = Player()
 p2 = Player()
 p3 = Player()
 p4 = Player()
 p5 = Player()
+winningTeam = Team(1)
+losingTeam = Team(0)
+match_table = []
 
 if not os.path.exists('bin'):
     os.mkdir('bin')
@@ -21,11 +24,10 @@ player_dict = {0: p0, 1: p1, 2: p2, 3: p3, 4: p4, 5: p5}
 os.chdir(str((sys.argv)[1]))
 dir = os.getcwd()
 for file in glob.glob("*.csv"):
+    game += 1
     f = open(file, "r")
     stats_map = repr(f.read()).split('\\n')[1:]
     stats_map.pop()
-    winningTeam = Team()
-    losingTeam = Team()
     for i in range(len(stats_map)):
         str = stats_map[i]
         individual_stats = str.split(',')
@@ -38,15 +40,28 @@ for file in glob.glob("*.csv"):
         x.addSaves(int(individual_stats[7]))
         x.addShots(int(individual_stats[8]))
         x.addMVP(int(individual_stats[10]))
+        x.setTeamPoints(int(individual_stats[11]))
         x.addWin(int(individual_stats[12]))
-        if int(individual_stats[12] == 1):
-            print("test")
+        if (int(individual_stats[12])):
+            winningTeam.addPlayer(x.getName())
+            winningTeam.setScore(x.getTeamPoints())
+        else:
+            losingTeam.addPlayer(x.getName())
+            losingTeam.setScore(x.getTeamPoints())
+        winningTeam.setGame(game)
+        losingTeam.setGame(game)
+    match_table.append(winningTeam.printStats() + losingTeam.printStats())
+    winningTeam.clearPlayers()
+    losingTeam.clearPlayers()
     f.close()
+
 os.chdir(wd + '\\bin')
-f = open('stats.csv', "w")
+f = open('stats-test.csv', "w")
 for j in range(6):
     y = player_dict.get(j)
     y.writeStats(f)
+for k in match_table:
+    f.write(k)
 f.close()
 
 

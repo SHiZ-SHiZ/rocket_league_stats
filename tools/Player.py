@@ -7,6 +7,7 @@ class Player:
     saves = 0
     shots = 0
     mvp = 0
+    teamscore = 0
     win = 0
 
     def getTeam(self):
@@ -56,6 +57,12 @@ class Player:
 
     def addMVP(self, mvp):
         self.mvp += mvp
+
+    def setTeamPoints(self, team_points):
+        self.teamscore = team_points
+
+    def getTeamPoints(self):
+        return self.teamscore
 
     def getWin(self):
         return self.win
