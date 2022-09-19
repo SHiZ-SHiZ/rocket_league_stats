@@ -48,9 +48,8 @@ for file in glob.glob("*.csv"):
         else:
             losingTeam.addPlayer(x.getName())
             losingTeam.setScore(x.getTeamPoints())
-        winningTeam.setGame(game)
-        losingTeam.setGame(game)
-    match_table.append(winningTeam.strPrintStats() + losingTeam.strPrintStats())
+    s = ("%d" + ',' + winningTeam.strPrintStats() + ',' + losingTeam.strPrintStats() + "\n") % game
+    match_table.append(s)
     winningTeam.clearPlayers()
     losingTeam.clearPlayers()
     f.close()

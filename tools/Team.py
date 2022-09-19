@@ -2,7 +2,6 @@ class Team:
     players = []
     score = 0
     win = 0
-    game = 0
 
     def __init__(self, isWin):
         self.players = []
@@ -27,14 +26,8 @@ class Team:
     def getScore(self):
         return self.score
 
-    def setGame(self, game):
-        self.game = game
-
-    def getGame(self):
-        return self.game
-
     def strPrintStats(self):
-        s = "%d,\"%s,%s,%s\",%d\n" % (self.getGame(), self.players[0], self.players[1], self.players[2], self.getScore())
+        s = "\"%s,%s,%s\",%d" % (self.players[0], self.players[1], self.players[2], self.getScore())
         return s
 
         
