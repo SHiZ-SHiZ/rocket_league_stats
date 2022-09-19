@@ -7,6 +7,7 @@ class Player:
     saves = 0
     shots = 0
     mvp = 0
+    teamscore = 0
     win = 0
 
     def getTeam(self):
@@ -57,6 +58,12 @@ class Player:
     def addMVP(self, mvp):
         self.mvp += mvp
 
+    def setTeamPoints(self, team_points):
+        self.teamscore = team_points
+
+    def getTeamPoints(self):
+        return self.teamscore
+
     def getWin(self):
         return self.win
 
@@ -65,11 +72,12 @@ class Player:
     
     
     def writeStats(self, f):
-        f.write(self.name + ',')
-        f.write("%d," % self.points)
-        f.write("%d," % self.goals)
-        f.write("%d," % self.assists)
-        f.write("%d," % self.saves)
-        f.write("%d," % self.shots)
-        f.write("%d," % self.mvp)
-        f.write("%d,\n" % self.win)
+        f.write(self.getName() + ',')
+        f.write("%d," % self.getPoints())
+        f.write("%d," % self.getGoals())
+        f.write("%d," % self.getAssists())
+        f.write("%d," % self.getSaves())
+        f.write("%d," % self.getShots())
+        f.write("%d," % self.getMVP())
+        f.write("%d,\n" % self.getWin())
+
