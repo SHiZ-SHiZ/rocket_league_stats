@@ -50,7 +50,7 @@ for file in glob.glob("*.csv"):
             losingTeam.setScore(x.getTeamPoints())
         winningTeam.setGame(game)
         losingTeam.setGame(game)
-    match_table.append(winningTeam.printStats() + losingTeam.printStats())
+    match_table.append(winningTeam.strPrintStats() + losingTeam.strPrintStats())
     winningTeam.clearPlayers()
     losingTeam.clearPlayers()
     f.close()
